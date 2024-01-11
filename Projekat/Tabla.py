@@ -1,8 +1,5 @@
-from copy import deepcopy
 from functools import reduce
-from termcolor import cprint
 import string
-from colorama import Fore, Style
 
 class Tabla:
     def __init__(self, dimenzija) -> None:
@@ -37,11 +34,6 @@ class Tabla:
         
         print(f"TABLA {self.dimenzija}x{self.dimenzija}")
 
-        for move_x in self.played_x:
-            self.matrica_3x3[move_x] = 'X'
-        for move_y in self.played_o:
-            self.matrica_3x3[move_y] = 'O'
-
         print('       ', end='')
         for broj in range(1, self.dimenzija + 1):
             print(broj, end='     ')
@@ -57,8 +49,6 @@ class Tabla:
                 for elem in red:
                     print(' '.join(elem[i]), end=' ')
                 print()
-    # 3.faza
+    
     def get_hash(self):
         return (reduce(lambda a, b: a * (b[0]+1) * (b[1]+1), self.played_x, 1), reduce(lambda a, b: a * (b[0]+1) * (b[1]+1), self.played_o, 2))
-    
-  
